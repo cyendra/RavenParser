@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RavenParser", "RavenParser\RavenParser.csproj", "{4BB2A964-F1A9-4643-B0D0-83B4191C4533}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{723D3C1B-FB7E-4C1D-B71D-82EF863DDC43}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{4BB2A964-F1A9-4643-B0D0-83B4191C4533}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BB2A964-F1A9-4643-B0D0-83B4191C4533}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BB2A964-F1A9-4643-B0D0-83B4191C4533}.Release|Any CPU.Build.0 = Release|Any CPU
+		{723D3C1B-FB7E-4C1D-B71D-82EF863DDC43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{723D3C1B-FB7E-4C1D-B71D-82EF863DDC43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{723D3C1B-FB7E-4C1D-B71D-82EF863DDC43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{723D3C1B-FB7E-4C1D-B71D-82EF863DDC43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
