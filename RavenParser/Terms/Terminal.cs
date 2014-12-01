@@ -9,9 +9,9 @@ namespace RavenParser.Terms
     /// <summary>
     /// 终结符的类
     /// </summary>
-    public class Terminator : ITerminator
+    public class Terminal : ITerminator
     {
-        public Terminator(string name, string rule, int weight = 0)
+        public Terminal(string name, string rule, int weight = 0)
         {
             Name = name;
             Rule = rule;

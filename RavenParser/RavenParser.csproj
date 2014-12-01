@@ -41,14 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Lex\Lexer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Terms\Grammars.cs" />
     <Compile Include="Terms\ITerminator.cs" />
     <Compile Include="Terms\INonterminal.cs" />
     <Compile Include="Terms\Nonterminal.cs" />
     <Compile Include="Terms\NonterminalManager.cs" />
-    <Compile Include="Terms\Terminator.cs" />
+    <Compile Include="Terms\Terminal.cs" />
     <Compile Include="Terms\TerminatorManager.cs" />
+    <Compile Include="Lex\Token.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

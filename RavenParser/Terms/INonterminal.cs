@@ -8,6 +8,9 @@ namespace RavenParser.Terms
 {
     public interface INonterminal
     {
-
+        void Add(IEnumerable<string> iter);
+        int Size { get; }
+        bool Remove(int idx);
+        IEnumerable<string> At(int idx);
     }
 }

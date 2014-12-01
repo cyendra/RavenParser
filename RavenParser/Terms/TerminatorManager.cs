@@ -9,8 +9,8 @@ namespace RavenParser.Terms {
     /// <summary>
     /// 终结符管理器
     /// </summary>
-    public class TerminatorManager {
-        public TerminatorManager() {
+    public class TerminalManager {
+        public TerminalManager() {
             _terminators = new SortedList<int, Dictionary<string, ITerminator>>();
             _indexDict = new Dictionary<string, int>();
             _ignores = new Dictionary<string, ITerminator>();
@@ -77,6 +77,12 @@ namespace RavenParser.Terms {
                 foreach (var term in dic.Value) {
                     lambda(term.Value);
                 }
+            }
+        }
+
+        public void MapToIgnore(TermLambda lambda) {
+            foreach (var term in _ignores) {
+                lambda(term.Value);
             }
         }
 
