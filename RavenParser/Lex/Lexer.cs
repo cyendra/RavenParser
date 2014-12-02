@@ -27,6 +27,7 @@ namespace RavenParser.Lex {
             while (ignore) {
                 ignore = false;
                 _grammer.MapToIgnores((x) => {
+                    if (ignore) return;
                     var mat = x.Regex.Match(_text, _pos);
                     if (mat.Success) {
                         _pos += mat.ToString().Length;
@@ -35,10 +36,13 @@ namespace RavenParser.Lex {
                     }
                 });
             }
+            bool ok = false;
             _grammer.MapToTerm((x) => {
+                if (ok) return;
                 var mat = x.Regex.Match(_text, _pos);
                 if (mat.Success) {
                     tok = new Token(x.Name, mat.ToString());
+                    ok = true;
                     return;
                 }
             });
