@@ -30,6 +30,8 @@ namespace RavenParser.Terms {
         public Grammars(){
             _terminalManager = new TerminalManager();
             _nonterminalManager = new NonterminalManager();
+            _termName = new HashSet<string>();
+            _gramName = new HashSet<string>();
         }
         private TerminalManager _terminalManager;
         private NonterminalManager _nonterminalManager;
@@ -65,6 +67,27 @@ namespace RavenParser.Terms {
             foreach (var item in ignores) {
                 lambda(item);
             }
+        }
+
+        private HashSet<string> _termName;
+        private HashSet<string> _gramName;
+        public bool InGrammars(string name) {
+            if (_termName.Contains(name) || _gramName.Contains(name)) {
+                return true;
+            }
+            return false;
+        }
+        public bool IsTerm(string name) {
+            if (_termName.Contains(name)) {
+                return true;
+            }
+            return false;
+        }
+        public bool IsGram(string name) {
+            if (_gramName.Contains(name)) {
+                return true;
+            }
+            return false;
         }
 
     }

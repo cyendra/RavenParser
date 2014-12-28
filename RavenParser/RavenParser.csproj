@@ -41,6 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\BaseDebug.cs" />
+    <Compile Include="Base\Production.cs" />
+    <Compile Include="Base\Productions.cs" />
+    <Compile Include="Base\Symbols.cs" />
+    <Compile Include="Base\Syntax.cs" />
     <Compile Include="Lex\Lexer.cs" />
     <Compile Include="LR\Project.cs" />
     <Compile Include="LR\GramNode.cs" />

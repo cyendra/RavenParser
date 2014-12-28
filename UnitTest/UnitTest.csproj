@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="TerminatorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="BaseAlgorithmTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RavenParser\RavenParser.csproj">
