@@ -63,6 +63,12 @@ namespace RavenParser.Base {
             }
             System.Console.WriteLine();
 
+            foreach (var item in syntax.EpsilonProduction) {
+                var key = item.Key;
+                var value = item.Value;
+                System.Console.WriteLine(key.Show() + " " + value);
+            }
+
             syntax.CalculateFirstSet();
             var firstSet = syntax.FirstSet;
             foreach (var item in firstSet) {
@@ -79,6 +85,29 @@ namespace RavenParser.Base {
             foreach (var product in firstSetOfProduct) {
                 System.Console.WriteLine(product.Key.Show());
                 foreach (var str in product.Value) {
+                    System.Console.Write("\"" + str + "\" ");
+                }
+                System.Console.WriteLine();
+            }
+
+            syntax.CalculateFollowSet("S");
+            var followSet = syntax.FollowSet;
+            foreach (var item in followSet) {
+                var key = item.Key;
+                var value = item.Value;
+                System.Console.Write(key + " : ");
+                foreach (var str in value) {
+                    System.Console.Write("\"" + str + "\" ");
+                }
+                System.Console.WriteLine();
+            }
+
+            syntax.CalculateSelectSet();
+            foreach (var item in syntax.SelectSet) {
+                var key = item.Key;
+                var value = item.Value;
+                System.Console.Write(key.Show() + " : ");
+                foreach (var str in value) {
                     System.Console.Write("\"" + str + "\" ");
                 }
                 System.Console.WriteLine();

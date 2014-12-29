@@ -14,6 +14,7 @@ namespace RavenParser.Base {
         private Dictionary<string, SortedSet<string>> followSet;
         private Dictionary<Production, SortedSet<string>> selectSet;
         private Dictionary<string, bool> epsilonSet;
+        private Dictionary<Production, bool> epsilonProduction;
 
         public Dictionary<string, bool> EpsilonSet {
             get {
@@ -33,6 +34,24 @@ namespace RavenParser.Base {
             }    
         }
 
+        public Dictionary<string, SortedSet<string>> FollowSet {
+            get {
+                return followSet;
+            }
+        }
+
+        public Dictionary<Production, bool> EpsilonProduction {
+            get {
+                return epsilonProduction;
+            }
+        }
+
+        public Dictionary<Production, SortedSet<string>> SelectSet {
+            get {
+                return selectSet;
+            }
+        }
+
         public Syntax(Symbols symbols, Productions productions) {
             this.symbols = symbols;
             this.productions = productions;
@@ -41,6 +60,7 @@ namespace RavenParser.Base {
             followSet = new Dictionary<string, SortedSet<string>>();
             selectSet = new Dictionary<Production, SortedSet<string>>();
             epsilonSet = new Dictionary<string, bool>();
+            epsilonProduction = new Dictionary<Production, bool>();
         }
 
 
@@ -58,9 +78,6 @@ namespace RavenParser.Base {
                     cal.Add(item.Name, 1);
                 }
             }
-
-            string s = symbols.Show();
-            string ss = productions.Show();
 
             // (2)
             foreach (var product in productions.Products) {
@@ -124,6 +141,26 @@ namespace RavenParser.Base {
                     }
                 }
             } while (changed);
+
+            foreach (var product in productions.Products) {
+                epsilonProduction.Add(product, false);
+                bool allEpsilon = true;
+                foreach (var term in product.List) {
+                    if (epsilonSet.ContainsKey(term) && epsilonSet[term] == true) {
+                        continue;
+                    }
+                    else if (symbols.IsEpsilon(term)) {
+                        continue;
+                    }
+                    else {
+                        allEpsilon = false;
+                        break;
+                    }
+                }
+                if (allEpsilon) {
+                    epsilonProduction[product] = true;
+                }
+            }
         }
 
         public void CalculateFirstSet() {
@@ -209,13 +246,14 @@ namespace RavenParser.Base {
             return set;
         }
 
-        public void CalculateFollowSet() {
+        public void CalculateFollowSet(string startSymbol) {
             followSet.Clear();
             SortedSet<string> epsilon = new SortedSet<string>();
             epsilon.Add("");
             foreach (var nonterm in symbols.Nonterms) {
                 followSet.Add(nonterm, new SortedSet<string>());
             }
+            followSet[startSymbol].Add("[#]");
             bool changed;
             do {
                 changed = false;
@@ -225,7 +263,7 @@ namespace RavenParser.Base {
                         if (symbols.IsNonterm(item)) {
                             if (i + 1 < product.List.Count) {
                                 var set = firstSetOfList(product, i + 1);
-                                if (set.IsSubsetOf(followSet[item]) == false) {
+                                if (set.IsSubsetOf(followSet[item].Union<string>(epsilon)) == false) {
                                     changed = true;
                                     followSet[item].UnionWith(set.Except<string>(epsilon));
                                 }
@@ -251,7 +289,18 @@ namespace RavenParser.Base {
 
         }
         public void CalculateSelectSet() {
-
+            SortedSet<string> epsilon = new SortedSet<string>();
+            epsilon.Add("");
+            foreach (var product in productions.Products) {
+                if (epsilonProduction[product]) {
+                    selectSet.Add(product, new SortedSet<string>(followSet[product.Name]
+                        .Union<string>(firstSetOfProduction[product]
+                        .Except<string>(epsilon))));
+                }
+                else {
+                    selectSet.Add(product, new SortedSet<string>(firstSetOfProduction[product]));
+                }
+            }
         }
 
 

@@ -42,6 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\BaseDebug.cs" />
+    <Compile Include="Base\Item.cs" />
+    <Compile Include="Base\ItemCollection.cs" />
+    <Compile Include="Base\Items.cs" />
     <Compile Include="Base\Production.cs" />
     <Compile Include="Base\Productions.cs" />
     <Compile Include="Base\Symbols.cs" />
