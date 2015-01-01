@@ -113,6 +113,9 @@ namespace RavenParser.Base {
                 System.Console.WriteLine();
             }
 
+            AugmentedGrammar grammar = new AugmentedGrammar(productions, "S");
+            System.Console.WriteLine(grammar.Show());
+
         }
     }
 }

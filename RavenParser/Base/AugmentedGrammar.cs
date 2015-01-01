@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace RavenParser.Base {
     public class AugmentedGrammar {
-        private SortedSet<Item> items;
+        private List<Item> items;
 
         public AugmentedGrammar(Productions productions, string startSymbol) {
-            items = new SortedSet<Item>();
-            foreach (var product in productions.Products) {
-                items.UnionWith(Item.CloneList(product));
-            }
+            items = new List<Item>();
             Production prod = new Production("[S']");
             prod.Add(startSymbol);
-            items.UnionWith(Item.CloneList(prod));
+            items.AddRange(Item.CloneList(prod));
+            foreach (var product in productions.Products) {
+                items.AddRange(Item.CloneList(product));
+            }
         }
 
         public string Show() {
@@ -25,5 +25,10 @@ namespace RavenParser.Base {
             }
             return builder.ToString();
         }
+
+        private ItemCollection Closure(Item I) {
+
+        }
+
     }
 }
