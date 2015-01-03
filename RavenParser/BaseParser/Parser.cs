@@ -281,38 +281,54 @@ namespace RavenParser.BaseParser {
     #endregion
 
     #region Factory
+
     class Factory {
-        public static readonly string FactoryName = "create";
-        public delegate ASTree MakeDelegate(Object arg);
-        public MakeDelegate Make0;
-        public ASTree Make(Object arg) {
-            try {
-                return Make0(arg);
-            }
-            catch (Exception e2) {
-                throw new ApplicationException("runtime", e2);
-            }
+        public static readonly string FactoryName = "Create";
+
+        protected delegate ASTree MakeDelegate(object arg);
+        protected MakeDelegate make0;
+        protected Factory(MakeDelegate make) {
+            make0 = make;
+        }
+        public ASTree Make(object arg) {
+            return make0(arg);
         }
         public static Factory GetForASTList(Type clazz) {
-            Factory f = null;
+            Factory f = Get(clazz, typeof(List<ASTree>));
+            if (f == null) {
+                f = new Factory(delegate(object arg) {
+                    List<ASTree> results = (List<ASTree>)arg;
+                    if (results.Count == 1) {
+                        return results[0];
+                    }
+                    else {
+                        return new ASTList(results);
+                    }
+                });
+            }
             return f;
         }
         public static Factory Get(Type clazz, Type argType) {
             if (clazz == null) {
                 return null;
             }
-            try {
-                MethodInfo m = clazz.GetMethod(FactoryName, new Type[] { argType });
-                Factory f = new Factory();  
-                Delegate test = Delegate.CreateDelegate(typeof(MakeDelegate),null, m, false);
-                if (test != null)
-                {
-                    f.Make0 = (MakeDelegate) test;
-                }
-                return f;
+            MethodInfo method = clazz.GetMethod(FactoryName, 
+                BindingFlags.Public | BindingFlags.InvokeMethod | BindingFlags.Static, 
+                null, 
+                new Type[] { argType }, 
+                null);
+            if (method != null) {
+                MakeDelegate make = delegate(object arg) {
+                    return method.Invoke(null, new object[] { arg }) as ASTree;
+                };
+                return new Factory(make);
             }
-            catch {
-
+            ConstructorInfo cons = clazz.GetConstructor(new Type[] { argType });
+            if (cons != null) {
+                MakeDelegate make = delegate(object arg) {
+                    return cons.Invoke(new object[] { arg }) as ASTree;
+                };
+                return new Factory(make);
             }
             return null;
         }
