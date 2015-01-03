@@ -27,7 +27,7 @@ namespace RavenParser.Base {
         }
 
         private ItemCollection Closure(Item I) {
-
+            return null;
         }
 
     }

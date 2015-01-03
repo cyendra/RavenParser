@@ -41,6 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseAST\ASTLeaf.cs" />
+    <Compile Include="BaseAST\ASTList.cs" />
+    <Compile Include="BaseAST\ASTree.cs" />
+    <Compile Include="BaseLexer\ILexer.cs" />
+    <Compile Include="BaseParser\Parser.cs" />
     <Compile Include="Base\BaseDebug.cs" />
     <Compile Include="Base\Item.cs" />
     <Compile Include="Base\ItemCollection.cs" />
@@ -65,6 +70,7 @@
     <Compile Include="Terms\Terminal.cs" />
     <Compile Include="Terms\TerminatorManager.cs" />
     <Compile Include="Lex\Token.cs" />
+    <Compile Include="BaseToken\Token.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
