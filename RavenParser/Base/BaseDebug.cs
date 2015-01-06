@@ -21,13 +21,12 @@ namespace RavenParser.Base {
     i = i + 1
 }
 sum";
-            string text2 = @"   ";
             Match mat;
             int pos = 0;
-            int len = text2.Length;
+            int len = text.Length;
             while (pos < len) {
                 System.Console.WriteLine("pos={0}, len={1}", pos, len);
-                mat = regex.Match(text2, pos);
+                mat = regex.Match(text, pos);
                 Console.WriteLine("   Group id: '{0}'", mat.Groups["id"].Value);
                 Console.WriteLine("   Group comments: '{0}'", mat.Groups["comments"].Value);
                 Console.WriteLine("   Group integer: '{0}'", mat.Groups["integer"].Value);

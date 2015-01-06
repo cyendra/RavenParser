@@ -18,14 +18,13 @@ namespace RavenParser
         [STAThread]
         static void Main(string[] args)
         {
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Input());
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Input());
 
-            BaseDebug debug = new BaseDebug();
-            debug.RegexTest();
-            
-            while (true) ;
+            //BaseDebug debug = new BaseDebug();
+            //debug.RegexTest();
+            //while (true) ;
         }
     }
 }

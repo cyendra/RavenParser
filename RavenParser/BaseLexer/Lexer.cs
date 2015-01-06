@@ -16,6 +16,7 @@ namespace RavenParser.BaseLexer {
         private int lineNumber;
 
         public Lexer(TextReader r) {
+            hasMore = true;
             reader = r;
             lineNumber = 0;
         }
@@ -97,6 +98,7 @@ namespace RavenParser.BaseLexer {
                     else {
                         token = new IdToken(lineNo, id);
                     }
+                    queue.Enqueue(token);
                 }
             }
         }
