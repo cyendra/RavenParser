@@ -46,6 +46,7 @@
     <Compile Include="BaseAST\ASTLeaf.cs" />
     <Compile Include="BaseAST\ASTList.cs" />
     <Compile Include="BaseAST\ASTree.cs" />
+    <Compile Include="BaseException\ParseException.cs" />
     <Compile Include="BaseForm\Input.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,7 +55,11 @@
     </Compile>
     <Compile Include="BaseLexer\ILexer.cs" />
     <Compile Include="BaseLexer\Lexer.cs" />
+    <Compile Include="BaseParser\Elements.cs" />
     <Compile Include="BaseParser\Parser.cs" />
+    <Compile Include="BaseToken\IdToken.cs" />
+    <Compile Include="BaseToken\IntegerToken.cs" />
+    <Compile Include="BaseToken\StrToken.cs" />
     <Compile Include="Base\BaseDebug.cs" />
     <Compile Include="Base\Item.cs" />
     <Compile Include="Base\ItemCollection.cs" />
@@ -89,6 +94,7 @@
       <DependentUpon>Input.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

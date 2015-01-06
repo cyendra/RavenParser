@@ -21,7 +21,7 @@ namespace RavenParser.Base {
     i = i + 1
 }
 sum";
-            string text2 = @" 123456 ""abcde"" abcd > >= < //aaa ";
+            string text2 = @"   ";
             Match mat;
             int pos = 0;
             int len = text2.Length;
@@ -36,6 +36,7 @@ sum";
                 foreach (Group group in mat.Groups) {
                     groupCtr++;
                     Console.WriteLine("   Group {0}: '{1}'", groupCtr, group.Value);
+                    Console.WriteLine(group.Value == "");
                     int captureCtr = 0;
                     foreach (Capture capture in group.Captures) {
                         captureCtr++;
