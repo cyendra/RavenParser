@@ -53,6 +53,7 @@
       <DependentUpon>Input.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseLexer\ILexer.cs" />
+    <Compile Include="BaseLexer\Lexer.cs" />
     <Compile Include="BaseParser\Parser.cs" />
     <Compile Include="Base\BaseDebug.cs" />
     <Compile Include="Base\Item.cs" />
@@ -83,7 +84,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="BaseForm\Input.resx">
+      <DependentUpon>Input.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

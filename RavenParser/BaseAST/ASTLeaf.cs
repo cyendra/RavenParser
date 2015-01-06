@@ -28,7 +28,7 @@ namespace RavenParser.BaseAST {
 
         public override ASTree this[int index] {
             get {
-                throw new System.IndexOutOfRangeException();
+                return null;
             }
         }
         public override int NumChildern {

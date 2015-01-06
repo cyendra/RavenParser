@@ -23,11 +23,48 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.components = new System.ComponentModel.Container();
+            this.runBtn = new System.Windows.Forms.Button();
+            this.codeText = new System.Windows.Forms.TextBox();
+            this.SuspendLayout();
+            // 
+            // runBtn
+            // 
+            this.runBtn.Location = new System.Drawing.Point(523, 341);
+            this.runBtn.Name = "runBtn";
+            this.runBtn.Size = new System.Drawing.Size(75, 23);
+            this.runBtn.TabIndex = 0;
+            this.runBtn.Text = "运行";
+            this.runBtn.UseVisualStyleBackColor = true;
+            // 
+            // codeText
+            // 
+            this.codeText.AcceptsReturn = true;
+            this.codeText.AcceptsTab = true;
+            this.codeText.Location = new System.Drawing.Point(12, 12);
+            this.codeText.Multiline = true;
+            this.codeText.Name = "codeText";
+            this.codeText.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.codeText.Size = new System.Drawing.Size(586, 323);
+            this.codeText.TabIndex = 1;
+            this.codeText.WordWrap = false;
+            // 
+            // Input
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(610, 376);
+            this.Controls.Add(this.codeText);
+            this.Controls.Add(this.runBtn);
+            this.Name = "Input";
             this.Text = "Input";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Button runBtn;
+        private System.Windows.Forms.TextBox codeText;
     }
 }
