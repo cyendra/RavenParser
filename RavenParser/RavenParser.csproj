@@ -61,6 +61,9 @@
     <Compile Include="ExAST\StringLiteral.cs" />
     <Compile Include="ExAST\WhileStmt.cs" />
     <Compile Include="BaseParser\ParseException.cs" />
+    <Compile Include="BaseParser\IEnvironment.cs" />
+    <Compile Include="ExEnvironment\NestedEnv.cs" />
+    <Compile Include="ExException\EvalException.cs" />
     <Compile Include="ExParser\RavParser.cs" />
     <Compile Include="ExForm\Input.cs">
       <SubType>Form</SubType>
@@ -83,6 +86,7 @@
     <Compile Include="Base\Productions.cs" />
     <Compile Include="Base\Symbols.cs" />
     <Compile Include="Base\Syntax.cs" />
+    <Compile Include="ExVisiter\EvalVisitor.cs" />
     <Compile Include="Lex\Lexer.cs" />
     <Compile Include="LR\Project.cs" />
     <Compile Include="LR\GramNode.cs" />
@@ -109,10 +113,7 @@
       <DependentUpon>Input.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Exception\" />
-    <Folder Include="ExVisiter\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
