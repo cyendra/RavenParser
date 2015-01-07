@@ -215,7 +215,8 @@ namespace RavenParser.BaseParser {
             private Precedence NextOperator(ILexer lexer) {
                 Token t = lexer.Peek(0);
                 if (t.IsIdentifier) {
-                    return ops[t.Text];
+                    if (ops.ContainsKey(t.Text)) return ops[t.Text];
+                    return null;
                 }
                 else {
                     return null;

@@ -10,6 +10,9 @@ using System.Windows.Forms;
 using System.IO;
 using RavenParser.BaseLexer;
 using RavenParser.BaseToken;
+using RavenParser.BaseExParser;
+using RavenParser.BaseAST;
+using RavenParser.BaseException;
 namespace RavenParser.BaseForm {
     public partial class Input : Form {
         public Input() {
@@ -19,9 +22,24 @@ namespace RavenParser.BaseForm {
         private void runBtn_Click(object sender, EventArgs e) {
             consoleText.Clear();
             Lexer lexer = new Lexer(new StringReader(codeText.Text));
+            RavParser parser = new RavParser();
+            try {
+                while (lexer.Peek(0) != Token.EOF) {
+                    ASTree ast = parser.Parse(lexer);
+                    consoleText.AppendText("> " + ast.ToString() + "\n");
+                }
+            }
+            catch (ParseException ex) {
+                consoleText.AppendText("> " + ex.Message + "\n");
+            }
+           
+            
+            /*
             for (Token tok = lexer.Read(); tok != Token.EOF; tok = lexer.Read()) {
                 consoleText.AppendText("> " + tok.Text + "\n");
             }
+            */
+
             
         }
     }

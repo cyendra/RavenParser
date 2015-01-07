@@ -46,7 +46,18 @@
     <Compile Include="BaseAST\ASTLeaf.cs" />
     <Compile Include="BaseAST\ASTList.cs" />
     <Compile Include="BaseAST\ASTree.cs" />
+    <Compile Include="BaseExAST\BinaryExpr.cs" />
+    <Compile Include="BaseExAST\BlockStmt.cs" />
+    <Compile Include="BaseExAST\IfStmt.cs" />
+    <Compile Include="BaseExAST\IntegerLiteral.cs" />
+    <Compile Include="BaseExAST\Name.cs" />
+    <Compile Include="BaseExAST\NegativeExpr.cs" />
+    <Compile Include="BaseExAST\NullStmt.cs" />
+    <Compile Include="BaseExAST\PrimaryExpr.cs" />
+    <Compile Include="BaseExAST\StringLiteral.cs" />
+    <Compile Include="BaseExAST\WhileStmt.cs" />
     <Compile Include="BaseException\ParseException.cs" />
+    <Compile Include="BaseExParser\RavParser.cs" />
     <Compile Include="BaseForm\Input.cs">
       <SubType>Form</SubType>
     </Compile>

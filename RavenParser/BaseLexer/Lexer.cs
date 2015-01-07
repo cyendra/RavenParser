@@ -8,7 +8,7 @@ using System.Text;
 
 namespace RavenParser.BaseLexer {
     public class Lexer : ILexer {
-        public static string regexPat = @"\s*(?<id>(?<comments>//.*)|(?<integer>[0-9]+)|(?<string>""(\\""|\\\\|\\n|[^""])*"")|[A-Z_a-z][A-Z_a-z0-9]*|==|<=|>=|&&|\|\||\p{P}|>|<|=|\+|-|\*|/)?";
+        public static string regexPat = @"\s*(?<id>(?<comments>//.*)|(?<integer>[0-9]+)|(?<string>""(\\""|\\\\|\\n|[^""])*"")|[A-Z_a-z][A-Z_a-z0-9]*|:=|<=|>=|&&|\|\||\p{P}|>|<|=|\+|-|\*|/)?";
         private Regex regex = new Regex(regexPat);
         private Queue<Token> queue = new Queue<Token>();
         private bool hasMore;
