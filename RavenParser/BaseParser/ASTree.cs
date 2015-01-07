@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RavenParser.BaseAST {
+namespace RavenParser.BaseParser {
     public abstract class ASTree : IEnumerable<ASTree> {
         public virtual ASTree this[int index] {
             get {

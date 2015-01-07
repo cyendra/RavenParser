@@ -1,4 +1,4 @@
-﻿namespace RavenParser.BaseForm {
+﻿namespace RavenParser.ExForm {
     partial class Input {
         /// <summary>
         /// Required designer variable.

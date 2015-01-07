@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RavenParser.BaseAST {
+namespace RavenParser.BaseParser {
     public class ASTList : ASTree {
         protected List<ASTree> children;
         public ASTList(List<ASTree> list) {

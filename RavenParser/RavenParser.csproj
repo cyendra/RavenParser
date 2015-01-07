@@ -43,34 +43,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseAST\ASTLeaf.cs" />
-    <Compile Include="BaseAST\ASTList.cs" />
-    <Compile Include="BaseAST\ASTree.cs" />
-    <Compile Include="BaseExAST\BinaryExpr.cs" />
-    <Compile Include="BaseExAST\BlockStmt.cs" />
-    <Compile Include="BaseExAST\IfStmt.cs" />
-    <Compile Include="BaseExAST\IntegerLiteral.cs" />
-    <Compile Include="BaseExAST\Name.cs" />
-    <Compile Include="BaseExAST\NegativeExpr.cs" />
-    <Compile Include="BaseExAST\NullStmt.cs" />
-    <Compile Include="BaseExAST\PrimaryExpr.cs" />
-    <Compile Include="BaseExAST\StringLiteral.cs" />
-    <Compile Include="BaseExAST\WhileStmt.cs" />
-    <Compile Include="BaseException\ParseException.cs" />
-    <Compile Include="BaseExParser\RavParser.cs" />
-    <Compile Include="BaseForm\Input.cs">
+    <Compile Include="BaseParser\ASTLeaf.cs" />
+    <Compile Include="BaseParser\ASTList.cs" />
+    <Compile Include="BaseParser\ASTree.cs" />
+    <Compile Include="ExAST\Arguments.cs" />
+    <Compile Include="ExAST\BinaryExpr.cs" />
+    <Compile Include="ExAST\BlockStmt.cs" />
+    <Compile Include="ExAST\DefStmt.cs" />
+    <Compile Include="ExAST\IfStmt.cs" />
+    <Compile Include="ExAST\IntegerLiteral.cs" />
+    <Compile Include="ExAST\Name.cs" />
+    <Compile Include="ExAST\NegativeExpr.cs" />
+    <Compile Include="ExAST\NullStmt.cs" />
+    <Compile Include="ExAST\ParameterList.cs" />
+    <Compile Include="ExAST\Postfix.cs" />
+    <Compile Include="ExAST\PrimaryExpr.cs" />
+    <Compile Include="ExAST\StringLiteral.cs" />
+    <Compile Include="ExAST\WhileStmt.cs" />
+    <Compile Include="BaseParser\ParseException.cs" />
+    <Compile Include="ExParser\RavParser.cs" />
+    <Compile Include="ExForm\Input.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BaseForm\Input.Designer.cs">
+    <Compile Include="ExForm\Input.Designer.cs">
       <DependentUpon>Input.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseLexer\ILexer.cs" />
-    <Compile Include="BaseLexer\Lexer.cs" />
+    <Compile Include="BaseParser\ILexer.cs" />
+    <Compile Include="ExLexer\Lexer.cs" />
     <Compile Include="BaseParser\Elements.cs" />
     <Compile Include="BaseParser\Parser.cs" />
-    <Compile Include="BaseToken\IdToken.cs" />
-    <Compile Include="BaseToken\IntegerToken.cs" />
-    <Compile Include="BaseToken\StrToken.cs" />
+    <Compile Include="ExToken\IdToken.cs" />
+    <Compile Include="ExToken\IntegerToken.cs" />
+    <Compile Include="ExToken\StrToken.cs" />
     <Compile Include="Base\BaseDebug.cs" />
     <Compile Include="Base\Item.cs" />
     <Compile Include="Base\ItemCollection.cs" />
@@ -95,17 +99,20 @@
     <Compile Include="Terms\Terminal.cs" />
     <Compile Include="Terms\TerminatorManager.cs" />
     <Compile Include="Lex\Token.cs" />
-    <Compile Include="BaseToken\Token.cs" />
+    <Compile Include="BaseParser\Token.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="BaseForm\Input.resx">
+    <EmbeddedResource Include="ExForm\Input.resx">
       <DependentUpon>Input.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Exception\" />
+    <Folder Include="ExVisiter\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

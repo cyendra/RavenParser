@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RavenParser.BaseToken;
-using RavenParser.BaseAST;
-namespace RavenParser.BaseExAST {
+using RavenParser.ExToken;
+using RavenParser.BaseParser;
+namespace RavenParser.ExAST {
     public class WhileStmt : ASTList {
         public WhileStmt(List<ASTree> c) : base(c) { }
         public ASTree Condition {

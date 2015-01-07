@@ -8,12 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using RavenParser.BaseLexer;
-using RavenParser.BaseToken;
-using RavenParser.BaseExParser;
-using RavenParser.BaseAST;
-using RavenParser.BaseException;
-namespace RavenParser.BaseForm {
+using RavenParser.ExLexer;
+using RavenParser.ExToken;
+using RavenParser.ExParser;
+using RavenParser.BaseParser;
+namespace RavenParser.ExForm {
     public partial class Input : Form {
         public Input() {
             InitializeComponent();

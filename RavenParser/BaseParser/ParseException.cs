@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RavenParser.BaseToken;
+using RavenParser.ExToken;
 
-namespace RavenParser.BaseException {
+namespace RavenParser.BaseParser {
     public class ParseException : Exception {
         public ParseException(Token t) : this("", t) { }
         public ParseException(string msg, Token t) : base("syntax error around " + Location(t) + ". " + msg) { }

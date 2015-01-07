@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
-using RavenParser.BaseAST;
-using RavenParser.BaseLexer;
+using RavenParser.BaseParser;
+using RavenParser.ExLexer;
 using RavenParser.BaseParser.Elemets;
 
 namespace RavenParser.BaseParser {

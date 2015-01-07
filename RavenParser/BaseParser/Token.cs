@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RavenParser.BaseToken {
+namespace RavenParser.BaseParser {
     public class Token {
         public static readonly Token EOF = new Token(-1);
         public static readonly string EOL = "\\n";

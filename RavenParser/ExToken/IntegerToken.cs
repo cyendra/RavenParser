@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace RavenParser.BaseToken {
+using RavenParser.BaseParser;
+namespace RavenParser.ExToken {
     public class IntegerToken : Token {
         private int value;
         public IntegerToken(int line, int v) : base(line) {

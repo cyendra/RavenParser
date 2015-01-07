@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RavenParser.BaseToken;
+using RavenParser.ExToken;
 
-namespace RavenParser.BaseAST {
+namespace RavenParser.BaseParser {
     public class ASTLeaf : ASTree {
         private static List<ASTree> empty = new List<ASTree>();
 

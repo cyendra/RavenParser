@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RavenParser.BaseToken;
-namespace RavenParser.BaseLexer {
+using RavenParser.ExToken;
+namespace RavenParser.BaseParser {
     public interface ILexer {
         Token Read();
         Token Peek(int i);

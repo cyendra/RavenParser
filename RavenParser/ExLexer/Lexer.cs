@@ -1,12 +1,12 @@
-﻿using RavenParser.BaseException;
-using RavenParser.BaseToken;
+﻿using RavenParser.BaseParser;
+using RavenParser.ExToken;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Text;
 
-namespace RavenParser.BaseLexer {
+namespace RavenParser.ExLexer {
     public class Lexer : ILexer {
         public static string regexPat = @"\s*(?<id>(?<comments>//.*)|(?<integer>[0-9]+)|(?<string>""(\\""|\\\\|\\n|[^""])*"")|[A-Z_a-z][A-Z_a-z0-9]*|:=|<=|>=|&&|\|\||\p{P}|>|<|=|\+|-|\*|/)?";
         private Regex regex = new Regex(regexPat);

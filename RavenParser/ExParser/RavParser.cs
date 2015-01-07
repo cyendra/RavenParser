@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RavenParser.BaseAST;
-using RavenParser.BaseToken;
-using RavenParser.BaseExAST;
-using RavenParser.BaseLexer;
+﻿using RavenParser.ExAST;
+using RavenParser.ExLexer;
 using RavenParser.BaseParser;
-namespace RavenParser.BaseExParser {
+using System.Collections.Generic;
+namespace RavenParser.ExParser {
     public class RavParser {
         private HashSet<string> reserved;
         private Operators op;
