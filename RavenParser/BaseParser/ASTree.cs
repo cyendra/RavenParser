@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
+using RavenParser.ExException;
 namespace RavenParser.BaseParser {
     public abstract class ASTree : IEnumerable<ASTree> {
         public static readonly string VisitMethod = "Visit";

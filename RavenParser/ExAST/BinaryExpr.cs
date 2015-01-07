@@ -24,5 +24,14 @@ namespace RavenParser.ExAST {
                 return this[2];
             }
         }
+        public override string ToString() {
+            StringBuilder builder = new StringBuilder();
+            builder.Append('(')
+                .Append(Operator).Append(" ")
+                .Append(Left.ToString()).Append(" ")
+                .Append(Right.ToString())
+                .Append(')');
+            return builder.ToString();
+        }
     }
 }

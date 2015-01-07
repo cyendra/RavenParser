@@ -8,34 +8,72 @@ using RavenParser.BaseParser;
 using RavenParser.ExAST;
 using RavenParser.ExException;
 namespace RavenParser.ExVisiter {
+    public class ErrorValue {
+        private string errMsg;
+        public ErrorValue(string s) {
+            errMsg = s;
+        }
+        public ErrorValue(string s, ASTree t) : this(s + " " + t.Location()) { }
+        public string Message {
+            get {
+                return errMsg;
+            }
+        }
+        public override string ToString() {
+            return errMsg;
+        }
+    }
     public class EvalVisitor {
+        private bool debug;
+        public bool DebugOption {
+            get {
+                return debug;
+            }
+            set {
+                debug = value;
+            }
+        }
         private object result;
         public object Result {
             get {
                 return result;
             }
         }
+        public EvalVisitor() {
+            debug = false;
+            result = 0;
+        }
         public void Visit(ASTree t, IEnvironment env) {
-            throw new EvalException("cannot eval: [ASTree]");
+            if (debug) System.Console.WriteLine("ASTree: " + t.GetType().ToString());
+            result = new ErrorValue("cannot eval: [ASTree]");
+            return;
         }
         public void Visit(ASTList t, IEnvironment env) {
-            throw new EvalException("cannot eval: " + t.ToString());
+            if (debug) System.Console.WriteLine("ASTList: " + t.GetType().ToString());
+            result = new ErrorValue("cannot eval: " + t.ToString());
+            return;
         }
         public void Visit(ASTLeaf t, IEnvironment env) {
-            throw new EvalException("cannot eval: " + t.ToString());
+            if (debug) System.Console.WriteLine("ASTLeaf: " + t.GetType().ToString());
+            result = new ErrorValue("cannot eval: " + t.ToString());
+            return;
         }
         public void Visit(IntegerLiteral t, IEnvironment env) {
+            if (debug) System.Console.WriteLine("IntegerLiteral: " + t.GetType().ToString());
             result = t.Value;
             return;
         }
         public void Visit(StringLiteral t, IEnvironment env) {
+            if (debug) System.Console.WriteLine("StringLiteral: " + t.GetType().ToString());
             result = t.Value;
             return;
         }
         public void Visit(Name t, IEnvironment env) {
+            if (debug) System.Console.WriteLine("Name: " + t.GetType().ToString());
             object value = env.Get(t.Text);
             if (value == null) {
-                throw new EvalException("undefined name: " + t.Text, t);
+                result = new ErrorValue("undefined name: " + t.Text, t);
+                return;
             }
             else {
                 result = value;
@@ -43,7 +81,9 @@ namespace RavenParser.ExVisiter {
             }
         }
         public void Visit(NegativeExpr t, IEnvironment env) {
-            Visit(t.Operand, env);
+            if (debug) System.Console.WriteLine("NegativeExpr: " + t.GetType().ToString());
+            t.Operand.Accept(this, env);
+            if (result is ErrorValue) return;
             object v = result;
             if (v is int) {
                 int rs = -((int)v);
@@ -51,21 +91,26 @@ namespace RavenParser.ExVisiter {
                 return;
             }
             else {
-                throw new EvalException("bad type for -", t);
+                result = new ErrorValue("bad type for -", t);
+                return;
             }
         }
         public void Visit(BinaryExpr t, IEnvironment env) {
+            if (debug) System.Console.WriteLine("BinaryExpr: " + t.GetType().ToString());
             string op = t.Operator;
             if (op == ":=") {
-                Visit(t.Right, env);
+                t.Right.Accept(this, env);
+                if (result is ErrorValue) return;
                 object right = result;
                 result = ComputeAssign(t, env, right);
                 return;
             }
             else {
-                Visit(t.Left, env);
+                t.Left.Accept(this, env);
+                if (result is ErrorValue) return;
                 object left = result;
-                Visit(t.Right, env);
+                t.Right.Accept(this, env);
+                if (result is ErrorValue) return;
                 object right = result;
                 result = ComputeOp(t, left, op, right);
                 return;
@@ -78,7 +123,7 @@ namespace RavenParser.ExVisiter {
                 return rvalue;
             }
             else {
-                throw new EvalException("bad assignment", t);
+                return new ErrorValue("bad assignment", t);
             }
         }
         private object ComputeOp(BinaryExpr t, object left, string op, object right) {
@@ -97,7 +142,7 @@ namespace RavenParser.ExVisiter {
                 }
             }
             else {
-                throw new EvalException("bad type", t);
+                return new ErrorValue("bad type", t);
             }
         }
         private object ComputeInteger(BinaryExpr t, int left, string op, int right) {
@@ -134,14 +179,16 @@ namespace RavenParser.ExVisiter {
                 return a <= b;
             }
             else {
-                throw new EvalException("bad operator", t);
+                return new ErrorValue("bad operator", t);
             }
         }
         public void Visit(BlockStmt t, IEnvironment env) {
+            if (debug) System.Console.WriteLine("BlockStmt: " + t.GetType().ToString());
             object res = 0;
             foreach (ASTree tree in t) {
                 if (!(tree is NullStmt)) {
-                    Visit(tree, env);
+                    tree.Accept(this, env);
+                    if (result is ErrorValue) return;
                     res = result;
                 }
             }
@@ -153,10 +200,13 @@ namespace RavenParser.ExVisiter {
             return true;
         }
         public void Visit(IfStmt t, IEnvironment env) {
-            Visit(t.Condition, env);
+            if (debug) System.Console.WriteLine("IfStmt: " + t.GetType().ToString());
+            t.Condition.Accept(this, env);
+            if (result is ErrorValue) return;
             object c = result;
             if (ObjectIsTrue(c)) {
-                Visit(t.ThenBlock, env);
+                t.ThenBlock.Accept(this, env);
+                if (result is ErrorValue) return;
                 return;
             }
             else {
@@ -165,18 +215,22 @@ namespace RavenParser.ExVisiter {
                     return;
                 }
                 else {
-                    Visit(t.ElseBlock, env);
+                    t.ElseBlock.Accept(this, env);
+                    if (result is ErrorValue) return;
                     return;
                 }
             }
         }
         public void Visit(WhileStmt t, IEnvironment env) {
+            if (debug) System.Console.WriteLine("WhileStmt: " + t.GetType().ToString());
             object res = 0;
             for (; ; ) {
-                Visit(t.Condition, env);
+                t.Condition.Accept(this, env);
+                if (result is ErrorValue) return;
                 object c = result;
                 if (ObjectIsTrue(c)) {
-                    Visit(t.Body, env);
+                    t.Body.Accept(this, env);
+                    if (result is ErrorValue) return;
                     res = result;
                 }
                 else {
