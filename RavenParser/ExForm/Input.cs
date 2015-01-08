@@ -28,21 +28,13 @@ namespace RavenParser.ExForm {
             EvalVisitor visitor = new EvalVisitor();
             visitor.DebugOption = true;
             IEnvironment env = new NestedEnv();
-            /*
-            ASTree atree = new ASTLeaf(new Token(0));
-            try {
-                atree.Accept(visitor, env);
-            }
-            catch (Exception bb) {
-                System.Console.WriteLine(bb.Message);
-            }
-            */
             try {
                 while (lexer.Peek(0) != Token.EOF) {
                     ASTree ast = parser.Parse(lexer);
-                    consoleText.AppendText("> " + ast.ToString() + "\n");
-                    //ast.Accept(visitor, env);
-                    //consoleText.AppendText("> " + visitor.Result.ToString() + "\n");
+                    System.Console.WriteLine("  >>> " + ast.GetType().ToString() + " " + ast.ToString());
+                    //consoleText.AppendText("> " + ast.ToString() + "\n");
+                    ast.Accept(visitor, env);
+                    consoleText.AppendText("> " + visitor.Result.ToString() + "\n");
                 }
             }
             catch (ParseException ex) {

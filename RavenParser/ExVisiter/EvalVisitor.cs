@@ -250,7 +250,7 @@ namespace RavenParser.ExVisiter {
             object res = result;
             if (res is ErrorValue) return;
             int n = t.NumChildern;
-            for (int i = 1; i < n; i++) {
+            for (int i = 0; i < n - 1; i++) {
                 t.Postfix(i).Accept(this, env, res);
                 if (result is ErrorValue) return;
             }
