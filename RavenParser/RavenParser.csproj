@@ -62,6 +62,7 @@
     <Compile Include="ExAST\WhileStmt.cs" />
     <Compile Include="BaseParser\ParseException.cs" />
     <Compile Include="BaseParser\IEnvironment.cs" />
+    <Compile Include="ExEnvironment\Function.cs" />
     <Compile Include="ExEnvironment\NestedEnv.cs" />
     <Compile Include="ExException\EvalException.cs" />
     <Compile Include="ExParser\RavParser.cs" />

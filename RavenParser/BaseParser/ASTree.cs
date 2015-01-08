@@ -27,11 +27,44 @@ namespace RavenParser.BaseParser {
                 method.Invoke(visitor, new object[] { this, env });
             }
         }
-        private static MethodInfo FindMethod(object visitor, Type type) {
-            if (type == typeof(object)) return null;
-            MethodInfo method = visitor.GetType().GetMethod(VisitMethod, new Type[] { type, typeof(IEnvironment) });
+        private static MethodInfo FindMethod(object visitor, Type clazz) {
+            if (clazz == typeof(object)) return null;
+            MethodInfo method = visitor.GetType().GetMethod(VisitMethod, new Type[] { clazz, typeof(IEnvironment) });
             if (method != null) return method;
-            else return FindMethod(visitor, type.BaseType);
+            else return FindMethod(visitor, clazz.BaseType);
+        }
+
+        public void Accept(object visitor, IEnvironment env, params object[] objs) {
+            int m = objs.Length;
+            Type[] types = new Type[m];
+            for (int i = 0; i < m; i++) {
+                types[i] = objs[i].GetType();
+            }
+            MethodInfo method = FindMethod(visitor, GetType(), types);
+            if (method != null) {
+                int n = objs.Length + 2;
+                object[] o = new object[n];
+                o[0] = this;
+                o[1] = env;
+                for (int i = 2; i < n; i++) {
+                    o[i] = objs[i - 2];
+                }
+                method.Invoke(visitor, o);
+            }
+        }
+        private static MethodInfo FindMethod(object visitor, Type clazz, Type[] objType) {
+            if (clazz == typeof(object)) return null;
+            int n = objType.Length + 2;
+            Type[] types = new Type[n];
+            types[0] = clazz;
+            types[1] = typeof(IEnvironment);
+            for (int i = 2; i < n; i++) {
+                types[i] = objType[i - 2];
+            }
+            MethodInfo method = visitor.GetType().GetMethod(VisitMethod, types);
+            if (method != null) return method;
+            else return FindMethod(visitor, clazz.BaseType, objType);
+            
         }
 
         #region IEnumerable<ASTree> 成员

@@ -13,18 +13,6 @@ using System.Threading;
 
 namespace RavenParser
 {
-    class Func {
-        public void gao() {
-            throw new Exception("ffff");
-        }
-    }
-    class Ref {
-        public void run(object obj, Type type) {
-            MethodInfo method = type.GetMethod("gao");
-            method.Invoke(obj, new object[] { });
-        }
-    }
-
     class Program
     {
         [STAThread]

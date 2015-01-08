@@ -8,5 +8,8 @@ namespace RavenParser.BaseParser {
     public interface IEnvironment {
         void Put(string name, object value);
         object Get(string name);
+        void PutNew(string name, object value);
+        IEnvironment Where(string name);
+        void SetOuter(IEnvironment e);
     }
 }

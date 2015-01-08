@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using RavenParser.BaseParser;
 using RavenParser.ExAST;
 using RavenParser.ExException;
+using RavenParser.ExEnvironment;
 namespace RavenParser.ExVisiter {
     public class ErrorValue {
         private string errMsg;
@@ -238,6 +239,51 @@ namespace RavenParser.ExVisiter {
                     return;
                 }
             }
+        }
+        public void Visit(DefStmt t, IEnvironment env) {
+            env.PutNew(t.Name, new Function(t.Parameters, t.Body, env));
+            result = t.Name;
+            return;
+        }
+        public void Visit(PrimaryExpr t, IEnvironment env) {
+            t.Operand.Accept(this, env);
+            object res = result;
+            if (res is ErrorValue) return;
+            int n = t.NumChildern;
+            for (int i = 1; i < n; i++) {
+                t.Postfix(i).Accept(this, env, res);
+                if (result is ErrorValue) return;
+            }
+            return;
+        }
+        public void Visit(Postfix t, IEnvironment env, object value) {
+            result = new ErrorValue("No Impl Postfix");
+            return;
+        }
+        public void Visit(Arguments t, IEnvironment callerEnv, object value) {
+            if (!(value is Function)) {
+                result = new ErrorValue("bad function", t);
+                return;
+            }
+            Function func = value as Function;
+            ParameterList pars = func.Parameters;
+            if (t.Size != pars.Size) {
+                result = new ErrorValue("bad number of arguments", t);
+                return;
+            }
+            IEnvironment newEnv = func.MakeEnv();
+            int num = 0;
+            foreach (ASTree a in t) {
+                a.Accept(this, callerEnv);
+                if (result is ErrorValue) return;
+                pars.Accept(this, newEnv, num++, result);
+                if (result is ErrorValue) return;
+            }
+            func.Body.Accept(this, newEnv);
+            return;
+        }
+        public void Visit(ParameterList t,IEnvironment env, int index, object value) {
+            env.PutNew(t.Name(index), value);
         }
     }
 }

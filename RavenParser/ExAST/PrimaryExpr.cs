@@ -11,5 +11,16 @@ namespace RavenParser.ExAST {
         public static ASTree Create(List<ASTree> c) {
             return c.Count == 1 ? c[0] : new PrimaryExpr(c);
         }
+        public ASTree Operand {
+            get {
+                return this[0];
+            }
+        }
+        public Postfix Postfix(int nest) {
+            return (Postfix)this[NumChildern - nest - 1];
+        }
+        public bool HasPostfix(int nest) {
+            return NumChildern - nest - 1 > 0;
+        }
     }
 }
