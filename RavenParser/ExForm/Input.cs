@@ -41,8 +41,8 @@ namespace RavenParser.ExForm {
                 while (lexer.Peek(0) != Token.EOF) {
                     ASTree ast = parser.Parse(lexer);
                     consoleText.AppendText("> " + ast.ToString() + "\n");
-                    ast.Accept(visitor, env);
-                    consoleText.AppendText("> " + visitor.Result.ToString() + "\n");
+                    //ast.Accept(visitor, env);
+                    //consoleText.AppendText("> " + visitor.Result.ToString() + "\n");
                 }
             }
             catch (ParseException ex) {
