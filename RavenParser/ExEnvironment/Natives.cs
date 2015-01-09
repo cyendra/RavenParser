@@ -15,6 +15,7 @@ namespace RavenParser.ExEnvironment {
         }
         protected void AppendNatives(IEnvironment env) {
             Append(env, "Write", typeof(Natives), "Write", typeof(object));
+            Append(env, "Read", typeof(Natives), "Read");
             Append(env, "Strlen", typeof(Natives), "Strlen", typeof(string));
             Append(env, "ToInt", typeof(Natives), "ToInt", typeof(object));
         }
@@ -26,6 +27,10 @@ namespace RavenParser.ExEnvironment {
         public static int Write(object obj) {
             System.Console.WriteLine(obj.ToString());
             return 0;
+        }
+        public static string Read() {
+            string s = System.Console.ReadLine();
+            return s;
         }
         public static int Strlen(string s) {
             return s.Length;

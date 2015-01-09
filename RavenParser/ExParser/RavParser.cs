@@ -21,28 +21,113 @@ namespace RavenParser.ExParser {
         private Parser args;
         private Parser postfix;
 
+        private Parser member;
+        private Parser classBody;
+        private Parser defclass;
+
         private Parser expr0;
         private Parser statement0;
 
 
-/*  primary     : "lambda" param_list block
- *              | ( "(" expr ")" | INTEGER | IDENTIFIER | STRING ) { postfix }
- *  factor      : "-" primary | primary
- *  expr        : factor { OP factor }
- *  block       : "begin" [ statement ] { ";" [statement] } "end"
- *  simple      : expr [ postfix ]
- *  statement   : "if" expr "then" statement [ "else" statement ] 
- *              | "while" expr "do" statement 
- *              | simple 
- *              | block 
- *  param       : IDENTIFIER
- *  params      : param { "," param }
- *  param_list  : "(" [ params ] ")"
- *  def         : "def" IDENTIFIER param_list block
- *  args        : expr { "," expr }
- *  postfix     : "(" [ args ] ")"
- *  program     : [ statement | def ] ;
- */
+        /*  primary     : "lambda" param_list block
+         *              | ( "(" expr ")" | INTEGER | IDENTIFIER | STRING ) { postfix }
+         *  factor      : "-" primary | primary
+         *  expr        : factor { OP factor }
+         *  block       : "begin" [ statement ] { ";" [statement] } "end"
+         *  simple      : expr [ postfix ]
+         *  statement   : "if" expr "then" statement [ "else" statement ] 
+         *              | "while" expr "do" statement 
+         *              | simple 
+         *              | block 
+         *  param       : IDENTIFIER
+         *  params      : param { "," param }
+         *  param_list  : "(" [ params ] ")"
+         *  def         : "def" IDENTIFIER param_list block
+         *  args        : expr { "," expr }
+         *  postfix     : "(" [ args ] ")" 
+         *              | "." IDENTIFIER
+         *  member      : def | simple
+         *  class_body  : "begin" [ member ] { ";" [member] } "end"
+         *  defclass    : "class" IDENTIFIER [ "extends" IDENTiFIER ] class_body
+         *  program     : [ statement | def | defclass ] ;
+         */
+        private void RavBNFWithClass() {
+            primary = Parser.rule(typeof(PrimaryExpr));
+            factor = Parser.rule();
+            expr = Parser.rule();
+            simple = Parser.rule(typeof(PrimaryExpr));
+            block = Parser.rule(typeof(BlockStmt));
+            statement = Parser.rule();
+            program = Parser.rule();
+
+            param = Parser.rule();
+            pars = Parser.rule(typeof(ParameterList));
+            paramList = Parser.rule();
+            args = Parser.rule(typeof(Arguments));
+            postfix = Parser.rule();
+            def = Parser.rule(typeof(DefStmt));
+
+            member = Parser.rule();
+            classBody = Parser.rule(typeof(ClassBody));
+            defclass = Parser.rule(typeof(ClassStmt));
+
+            member = member.or(def, simple);
+            classBody = classBody.sep("begin").option(member).repeat(Parser.rule().sep(";").option(member)).sep("end");
+            defclass = defclass.sep("class").identifier(reserved).option(Parser.rule().sep("extends").identifier(reserved)).ast(classBody);
+
+            param = param.identifier(reserved);
+            pars = pars.ast(param).repeat(Parser.rule().sep(",").ast(param));
+            paramList = paramList.sep("(").maybe(pars).sep(")");
+            args = args.ast(expr).repeat(Parser.rule().sep(",").ast(expr));
+            postfix = postfix.sep("(").maybe(args).sep(")");
+            postfix.insertChoice(Parser.rule(typeof(Dot)).sep(".").identifier(reserved));
+            def = def.sep("def").identifier(reserved).ast(paramList).ast(block);
+
+            primary = primary.or(Parser.rule().sep("(").ast(expr).sep(")"),
+                                                          Parser.rule().integer(typeof(IntegerLiteral)),
+                                                          Parser.rule().identifier(typeof(Name), reserved),
+                                                          Parser.rule().str(typeof(StringLiteral))).repeat(postfix);
+            primary.insertChoice(Parser.rule(typeof(Lambda)).sep("lambda").ast(paramList).ast(block));
+
+            factor = factor.or(Parser.rule(typeof(NegativeExpr)).sep("-").ast(primary), primary);
+
+            expr = expr.expression(typeof(BinaryExpr), factor, op);
+
+            simple = simple.ast(expr).option(postfix);
+
+            block = block.sep("begin")
+                         .option(statement)
+                         .repeat(Parser.rule().sep(";").option(statement))
+                         .sep("end");
+
+            statement = statement.or(
+                Parser.rule(typeof(IfStmt)).sep("if").ast(expr).sep("then").ast(statement)
+                                           .option(Parser.rule().sep("else").ast(statement)),
+                Parser.rule(typeof(WhileStmt)).sep("while").ast(expr).sep("do").ast(statement),
+                simple,
+                block);
+
+            program = program.or(defclass, def, Parser.rule().option(statement), Parser.rule(typeof(NullStmt))).sep(";");
+        }
+
+        /*  primary     : "lambda" param_list block
+         *              | ( "(" expr ")" | INTEGER | IDENTIFIER | STRING ) { postfix }
+         *  factor      : "-" primary | primary
+         *  expr        : factor { OP factor }
+         *  block       : "begin" [ statement ] { ";" [statement] } "end"
+         *  simple      : expr [ postfix ]
+         *  statement   : "if" expr "then" statement [ "else" statement ] 
+         *              | "while" expr "do" statement 
+         *              | simple 
+         *              | block 
+         *  param       : IDENTIFIER
+         *  params      : param { "," param }
+         *  param_list  : "(" [ params ] ")"
+         *  def         : "def" IDENTIFIER param_list block
+         *  args        : expr { "," expr }
+         *  postfix     : "(" [ args ] ")"
+         *  program     : [ statement | def ] ;
+         */
         private void NewSpRavBNF() {
             primary = Parser.rule(typeof(PrimaryExpr));
             factor = Parser.rule();
@@ -175,7 +260,7 @@ namespace RavenParser.ExParser {
         
 
         private void InitParser() {
-            reserved = new HashSet<string>() { ";", "begin", "end", "if", "then", "else", "while", "do", "(", ")" };
+            reserved = new HashSet<string>() { ";", "begin", "end", "if", "then", "else", "while", "do", "(", ")", "class", "extends" };
             op = new Operators();
             op.Add(":=", 1, Operators.RIGHT);
             op.Add("=", 2, Operators.LEFT);
@@ -189,7 +274,8 @@ namespace RavenParser.ExParser {
         }
         public RavParser() {
             InitParser();
-            NewSpRavBNF();
+            //NewSpRavBNF();
+            RavBNFWithClass();
         }
         public ASTree Parse(Lexer lexer) {
             return program.parse(lexer);

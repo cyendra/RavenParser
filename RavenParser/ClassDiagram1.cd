@@ -1,0 +1,576 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="RavenParser.Base.AugmentedGrammar" Collapsed="true">
+    <Position X="40.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAABAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Base\AugmentedGrammar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.Base.BaseDebug" Collapsed="true">
+    <Position X="42.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Base\BaseDebug.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.Base.Item" Collapsed="true">
+    <Position X="46" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAIAAwACAAMAAAQAAAAAAAAABI=</HashCode>
+      <FileName>Base\Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.Base.ItemCollection" Collapsed="true">
+    <Position X="47.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAACAAAgAAAAIAAAA=</HashCode>
+      <FileName>Base\ItemCollection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.Base.ProductionComparer" Collapsed="true">
+    <Position X="46" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Base\Production.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.Base.Production" Collapsed="true">
+    <Position X="44.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAgAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAABAAAI=</HashCode>
+      <FileName>Base\Production.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.Base.Productions" Collapsed="true">
+    <Position X="47.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAIAAAAEAAAAAAAAIAAAAAQ=</HashCode>
+      <FileName>Base\Productions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.Base.Symbols" Collapsed="true">
+    <Position X="46" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAACAAAAAgAAAAAAAgIAAABAAAEAABAAAAAAAQAACQ=</HashCode>
+      <FileName>Base\Symbols.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.Base.Syntax" Collapsed="true">
+    <Position X="47.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAhwIAAIMBAAAAAACAAAQAgEAFAAAoAAAAAA=</HashCode>
+      <FileName>Base\Syntax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.BaseParser.ASTLeaf" Collapsed="true">
+    <Position X="4.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAABAECAIAAAACAAAAAAEAAAAAAAABAAA=</HashCode>
+      <FileName>BaseParser\ASTLeaf.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.BaseParser.ASTList" Collapsed="true">
+    <Position X="23.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABQECAIAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>BaseParser\ASTList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.BaseParser.ASTree" Collapsed="true">
+    <Position X="20.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AKAAAAAAAAAAABAACAIAABAAAAAAAAEAAAAAAQAAAAA=</HashCode>
+      <FileName>BaseParser\ASTree.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RavenParser.BaseParser.ParseException" Collapsed="true">
+    <Position X="51.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BaseParser\ParseException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.BaseParser.Precedence" Collapsed="true">
+    <Position X="42.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAgAAAAAAA=</HashCode>
+      <FileName>BaseParser\Parser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.BaseParser.Operators" Collapsed="true">
+    <Position X="49.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAgAAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>BaseParser\Parser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.BaseParser.Factory" Collapsed="true">
+    <Position X="51.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAABAAAAAAACAAAAAAAAEAAAAAAIAAAA=</HashCode>
+      <FileName>BaseParser\Parser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.BaseParser.Parser" Collapsed="true">
+    <Position X="40.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAQgAEAAAgABIIIAQAIAAAADAAAiBAAEIAAAAAIAA=</HashCode>
+      <FileName>BaseParser\Parser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.BaseParser.Token" Collapsed="true">
+    <Position X="7" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAABAAAAAAIAAAIAAAACAAAAAIAAAABCQAAAAA=</HashCode>
+      <FileName>BaseParser\Token.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.BaseParser.Elemets.Element" Collapsed="true">
+    <Position X="10.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BaseParser\Elements.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.BaseParser.Elemets.Tree" Collapsed="true">
+    <Position X="3.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>BaseParser\Elements.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.BaseParser.Elemets.OrTree" Collapsed="true">
+    <Position X="5.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAkAAAABCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BaseParser\Elements.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.BaseParser.Elemets.Repeat" Collapsed="true">
+    <Position X="10.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAgAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>BaseParser\Elements.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.BaseParser.Elemets.AToken" Collapsed="true">
+    <Position X="16" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAgAAAAAgAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>BaseParser\Elements.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.BaseParser.Elemets.IdToken" Collapsed="true">
+    <Position X="17" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>BaseParser\Elements.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.BaseParser.Elemets.IntegerToken" Collapsed="true">
+    <Position X="19.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>BaseParser\Elements.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.BaseParser.Elemets.RealToken" Collapsed="true">
+    <Position X="12.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>BaseParser\Elements.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.BaseParser.Elemets.StrToken" Collapsed="true">
+    <Position X="14.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>BaseParser\Elements.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.BaseParser.Elemets.Leaf" Collapsed="true">
+    <Position X="1.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEgAgAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BaseParser\Elements.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.BaseParser.Elemets.Skip" Collapsed="true">
+    <Position X="1.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BaseParser\Elements.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.BaseParser.Elemets.Expr" Collapsed="true">
+    <Position X="8" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAgAAAAAgQAABAAAAAAAAAAAAAAAAAAAIAIAAEAA=</HashCode>
+      <FileName>BaseParser\Elements.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.ExAST.Arguments" Collapsed="true">
+    <Position X="18" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExAST\Arguments.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.ExAST.BinaryExpr" Collapsed="true">
+    <Position X="29.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAACACAAAAAIAA=</HashCode>
+      <FileName>ExAST\BinaryExpr.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.ExAST.BlockStmt" Collapsed="true">
+    <Position X="31.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExAST\BlockStmt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.ExAST.ClassBody" Collapsed="true">
+    <Position X="36" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExAST\ClassBody.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.ExAST.ClassStmt" Collapsed="true">
+    <Position X="9" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAABAAQAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>ExAST\ClassStmt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.ExAST.DefStmt" Collapsed="true">
+    <Position X="13.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAABAAQAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>ExAST\DefStmt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.ExAST.Dot" Collapsed="true">
+    <Position X="15.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExAST\Dot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.ExAST.IfStmt" Collapsed="true">
+    <Position X="22.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEACAAAQEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExAST\IfStmt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.ExAST.IntegerLiteral" Collapsed="true">
+    <Position X="4.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>ExAST\IntegerLiteral.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.ExAST.Lambda" Collapsed="true">
+    <Position X="27" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAABAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>ExAST\Lambda.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.ExAST.Name" Collapsed="true">
+    <Position X="6.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>ExAST\Name.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.ExAST.NegativeExpr" Collapsed="true">
+    <Position X="33.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>ExAST\NegativeExpr.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.ExAST.NullStmt" Collapsed="true">
+    <Position X="38.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExAST\NullStmt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.ExAST.ParameterList" Collapsed="true">
+    <Position X="11.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExAST\ParameterList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.ExAST.Postfix" Collapsed="true">
+    <Position X="16.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExAST\Postfix.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.ExAST.PrimaryExpr" Collapsed="true">
+    <Position X="20.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAEAAEAAAA=</HashCode>
+      <FileName>ExAST\PrimaryExpr.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.ExAST.StringLiteral" Collapsed="true">
+    <Position X="2.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>ExAST\StringLiteral.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.ExAST.WhileStmt" Collapsed="true">
+    <Position X="24.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAEAAABAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExAST\WhileStmt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.ExEnvironment.ClassInfo" Collapsed="true">
+    <Position X="44.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAKAAAAAgAEAAABAAQAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>ExEnvironment\ClassInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.ExEnvironment.Function" Collapsed="true">
+    <Position X="40.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAABAAAEAAABAAAAAQAAAAAAAIAAAACAAAA=</HashCode>
+      <FileName>ExEnvironment\Function.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.ExEnvironment.NativeFunction" Collapsed="true">
+    <Position X="40.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAIACAEAAAAAAAAAAAEAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>ExEnvironment\NativeFunction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.ExEnvironment.Natives" Collapsed="true">
+    <Position X="42.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAgAAAAAQAAFAgAAAEAAAA=</HashCode>
+      <FileName>ExEnvironment\Natives.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.ExEnvironment.NestedEnv" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="44.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAABAAAAAAAAAAAGAACAQAAAAAAAAAAg=</HashCode>
+      <FileName>ExEnvironment\NestedEnv.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RavenParser.ExEnvironment.RavObject" Collapsed="true">
+    <Position X="40.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAEAAAAAAAgAAAAAAAAAAAAAAEACAA=</HashCode>
+      <FileName>ExEnvironment\RavObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.ExException.EvalException" Collapsed="true">
+    <Position X="47.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExException\EvalException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.ExForm.Input" Collapsed="true">
+    <Position X="44.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAACAAAIAAAAKAgAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExForm\Input.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.ExLexer.Lexer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="51.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABCAAAAABAEAAQAAARAAAAgCAAAAAAAAAAAAAAQIEA=</HashCode>
+      <FileName>ExLexer\Lexer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RavenParser.ExParser.RavParser" Collapsed="true">
+    <Position X="42.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQhAAMAAAACQAAMAAIAhAAABAAAAQAAiIAYAAggZAE=</HashCode>
+      <FileName>ExParser\RavParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.ExToken.IdToken" Collapsed="true">
+    <Position X="4.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAABCAAAAAA=</HashCode>
+      <FileName>ExToken\IdToken.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.ExToken.IntegerToken" Collapsed="true">
+    <Position X="7" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAACQAAAAA=</HashCode>
+      <FileName>ExToken\IntegerToken.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.ExToken.StrToken" Collapsed="true">
+    <Position X="9.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAIAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>ExToken\StrToken.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.ExVisiter.ErrorValue" Collapsed="true">
+    <Position X="46" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>ExVisiter\EvalVisitor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.ExVisiter.EvalVisitor" Collapsed="true">
+    <Position X="49.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAACQABICAABYAAACAAAAgAAAAAAAAAEA=</HashCode>
+      <FileName>ExVisiter\EvalVisitor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.Lex.Lexer" Collapsed="true">
+    <Position X="49.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAAAAAAgQAAIAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Lex\Lexer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.Lex.Token" Collapsed="true">
+    <Position X="42.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAIAQAACAAAAAA=</HashCode>
+      <FileName>Lex\Token.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.LR.GramNode" Collapsed="true">
+    <Position X="0.5" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAIAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>LR\GramNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.LR.Node" Collapsed="true">
+    <Position X="1.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAgAAQAAAAAAAQAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>LR\Node.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.LR.Project" Collapsed="true">
+    <Position X="51.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAgAAABAAAQAAAAAAAQAAACAAAAAAAAAAAQAABA=</HashCode>
+      <FileName>LR\Project.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.LR.State" Collapsed="true">
+    <Position X="44.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAIAACAAAAAAABAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>LR\State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.LR.TermNode" Collapsed="true">
+    <Position X="2.75" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAIAAAACAAAAAA=</HashCode>
+      <FileName>LR\TermNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.Program" Collapsed="true">
+    <Position X="49.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQ=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.Terms.TermGram" Collapsed="true">
+    <Position X="49.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAABAAAAAAAAAQAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Terms\Grammars.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.Terms.Grammars" Collapsed="true">
+    <Position X="42.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QgCAAAECAAgQAAAAAAAAQAAAQgAAAADAAAAAAAAAACA=</HashCode>
+      <FileName>Terms\Grammars.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.Terms.Nonterminal" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="46" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAgAAAAAAABAAAAACAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Terms\Nonterminal.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RavenParser.Terms.NonterminalManager" Collapsed="true">
+    <Position X="47.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Terms\NonterminalManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RavenParser.Terms.Terminal" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="51.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABIAAAAEAAAAAAAAAAAAQAACAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Terms\Terminal.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RavenParser.Terms.TerminalManager" Collapsed="true">
+    <Position X="40.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAACDAAAABAgAgAAAABAQAAAAAAAAAAAAAAQQAA=</HashCode>
+      <FileName>Terms\TerminatorManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="RavenParser.BaseParser.IEnvironment" Collapsed="true">
+    <Position X="40.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAABAAAAAAAAAAAEAAAAQAAAAAAAAAAg=</HashCode>
+      <FileName>BaseParser\IEnvironment.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RavenParser.BaseParser.ILexer" Collapsed="true">
+    <Position X="42.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BaseParser\ILexer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RavenParser.Terms.INonterminal" Collapsed="true">
+    <Position X="44.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAgAAAAAAABAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Terms\INonterminal.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RavenParser.Terms.ITerminator" Collapsed="true">
+    <Position X="46" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAQAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Terms\ITerminator.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

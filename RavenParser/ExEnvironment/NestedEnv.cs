@@ -18,6 +18,7 @@ namespace RavenParser.ExEnvironment {
         }
 
         public void PutNew(string name, object value) {
+            if (name == null) return;
             if (values.ContainsKey(name)) {
                 values[name] = value;
             }
@@ -27,6 +28,7 @@ namespace RavenParser.ExEnvironment {
         }
 
         public IEnvironment Where(string name) {
+            if (name == null) return null;
             if (values.ContainsKey(name)) {
                 return this;
             }
@@ -50,6 +52,7 @@ namespace RavenParser.ExEnvironment {
 
         public object Get(string name) {
             object v = null;
+            if (name == null) return v;
             if (values.ContainsKey(name)) {
                 v = values[name];
             }

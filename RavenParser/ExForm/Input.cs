@@ -26,12 +26,12 @@ namespace RavenParser.ExForm {
             Lexer lexer = new Lexer(new StringReader(codeText.Text));
             RavParser parser = new RavParser();
             EvalVisitor visitor = new EvalVisitor();
-            visitor.DebugOption = true;
+            visitor.DebugOption = false;
             IEnvironment env = new Natives().Enviroment(new NestedEnv());
             try {
                 while (lexer.Peek(0) != Token.EOF) {
                     ASTree ast = parser.Parse(lexer);
-                    System.Console.WriteLine("  >>> " + ast.GetType().ToString() + " " + ast.ToString());
+                    //System.Console.WriteLine("  >>> " + ast.GetType().ToString() + " " + ast.ToString());
                     //consoleText.AppendText("> " + ast.ToString() + "\n");
                     ast.Accept(visitor, env);
                     consoleText.AppendText("> " + visitor.Result.ToString() + "\n");

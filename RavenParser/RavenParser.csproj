@@ -49,7 +49,10 @@
     <Compile Include="ExAST\Arguments.cs" />
     <Compile Include="ExAST\BinaryExpr.cs" />
     <Compile Include="ExAST\BlockStmt.cs" />
+    <Compile Include="ExAST\ClassBody.cs" />
+    <Compile Include="ExAST\ClassStmt.cs" />
     <Compile Include="ExAST\DefStmt.cs" />
+    <Compile Include="ExAST\Dot.cs" />
     <Compile Include="ExAST\Lambda.cs" />
     <Compile Include="ExAST\IfStmt.cs" />
     <Compile Include="ExAST\IntegerLiteral.cs" />
@@ -63,10 +66,12 @@
     <Compile Include="ExAST\WhileStmt.cs" />
     <Compile Include="BaseParser\ParseException.cs" />
     <Compile Include="BaseParser\IEnvironment.cs" />
+    <Compile Include="ExEnvironment\ClassInfo.cs" />
     <Compile Include="ExEnvironment\Function.cs" />
     <Compile Include="ExEnvironment\NativeFunction.cs" />
     <Compile Include="ExEnvironment\Natives.cs" />
     <Compile Include="ExEnvironment\NestedEnv.cs" />
+    <Compile Include="ExEnvironment\RavObject.cs" />
     <Compile Include="ExException\EvalException.cs" />
     <Compile Include="ExParser\RavParser.cs" />
     <Compile Include="ExForm\Input.cs">
@@ -111,10 +116,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ExForm\Input.resx">
       <DependentUpon>Input.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

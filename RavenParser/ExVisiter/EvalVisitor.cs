@@ -123,8 +123,27 @@ namespace RavenParser.ExVisiter {
                 env.Put((l as Name).Text, rvalue);
                 return rvalue;
             }
-            else {
-                return new ErrorValue("bad assignment", t);
+            else if (l is PrimaryExpr) {
+                PrimaryExpr p = l as PrimaryExpr;
+                if (p.HasPostfix(0) && (p.Postfix(0) is Dot)) {
+                    p.Accept(this, env, 1);
+                    object tp = result;
+                    if (result is ErrorValue) return result;
+                    if (tp is RavObject) {
+                        return SetField(t, (tp as RavObject), (p.Postfix(0) as Dot), rvalue);
+                    }
+                }
+            }
+            return new ErrorValue("bad assignment", t);
+        }
+        private object SetField(BinaryExpr t, RavObject obj, Dot expr, object rvalue) {
+            string name = expr.Name;
+            try {
+                obj.Write(name, rvalue);
+                return rvalue;
+            }
+            catch (Exception) {
+                return new ErrorValue("bad member access " + t.Location() + " in Assgin: " + name);
             }
         }
         private object ComputeOp(BinaryExpr t, object left, string op, object right) {
@@ -245,6 +264,7 @@ namespace RavenParser.ExVisiter {
             result = t.Name;
             return;
         }
+        /*
         public void Visit(PrimaryExpr t, IEnvironment env) {
             t.Operand.Accept(this, env);
             object res = result;
@@ -255,6 +275,24 @@ namespace RavenParser.ExVisiter {
                 if (result is ErrorValue) return;
             }
             return;
+        }
+        */
+        public void Visit(PrimaryExpr t, IEnvironment env) {
+            EvalSubExpr(t, env, 0);
+        }
+        public void Visit(PrimaryExpr t, IEnvironment env, int nest) {
+            EvalSubExpr(t, env, nest);
+        }
+        private object EvalSubExpr(PrimaryExpr t, IEnvironment env, int nest) {
+            if (t.HasPostfix(nest)) {
+                object target = EvalSubExpr(t, env, nest + 1);
+                t.Postfix(nest).Accept(this, env, target);
+                return result;
+            }
+            else {
+                t.Operand.Accept(this, env);
+                return result;
+            }
         }
         public void Visit(Postfix t, IEnvironment env, object value) {
             result = new ErrorValue("No Impl Postfix");
@@ -304,6 +342,56 @@ namespace RavenParser.ExVisiter {
         }
         public void Visit(Lambda t, IEnvironment env) {
             result = new Function(t.Parameters, t.Body, env);
+        }
+        public void Visit(ClassStmt t, IEnvironment env) {
+            ClassInfo ci;
+            try {
+                ci = new ClassInfo(t, env);
+            }
+            catch (Exception e) {
+                result = new ErrorValue(e.Message);
+                return;
+            }
+            env.Put(t.Name, ci);
+            result = t.Name;
+            return;
+        }
+        public void Visit(ClassBody t, IEnvironment env) {
+            foreach (ASTree tree in t) {
+                tree.Accept(this, env);
+                if (result is ErrorValue) return;
+            }
+            result = 0;
+            return;
+        }
+        public void Visit(Dot t, IEnvironment env, object value) {
+            string member = t.Name;
+            if (value is ClassInfo) {
+                if (member == "new") {
+                    ClassInfo ci = value as ClassInfo;
+                    NestedEnv e = new NestedEnv(ci.Environment);
+                    RavObject ro = new RavObject(e);
+                    e.PutNew("this", ro);
+                    InitObject(ci, e);
+                    result = ro;
+                    return;
+                }
+            }
+            else if (value is RavObject) {
+                try {
+                    result = (value as RavObject).Read(member);
+                    return;
+                }
+                catch (RavObject.AccessException) { }
+            }
+            result = new ErrorValue("bad member access in Dot: " + member, t);
+        }
+        private void InitObject(ClassInfo ci, IEnvironment env) {
+            if (ci.SuperClass != null) {
+                InitObject(ci.SuperClass, env);
+                if (result is ErrorValue) return;
+            }
+            ci.Body.Accept(this, env);
         }
     }
 }
