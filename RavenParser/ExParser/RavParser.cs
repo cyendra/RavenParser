@@ -25,7 +25,8 @@ namespace RavenParser.ExParser {
         private Parser statement0;
 
 
-/*  primary     : ( "(" expr ")" | INTEGER | IDENTIFIER | STRING ) { postfix }
+/*  primary     : "lambda" param_list block
+ *              | ( "(" expr ")" | INTEGER | IDENTIFIER | STRING ) { postfix }
  *  factor      : "-" primary | primary
  *  expr        : factor { OP factor }
  *  block       : "begin" [ statement ] { ";" [statement] } "end"
@@ -69,6 +70,7 @@ namespace RavenParser.ExParser {
                                                           Parser.rule().integer(typeof(IntegerLiteral)),
                                                           Parser.rule().identifier(typeof(Name), reserved),
                                                           Parser.rule().str(typeof(StringLiteral))).repeat(postfix);
+            primary.insertChoice(Parser.rule(typeof(Lambda)).sep("lambda").ast(paramList).ast(block));
 
             factor = factor.or(Parser.rule(typeof(NegativeExpr)).sep("-").ast(primary), primary);
 

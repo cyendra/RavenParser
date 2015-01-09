@@ -27,7 +27,7 @@ namespace RavenParser.ExForm {
             RavParser parser = new RavParser();
             EvalVisitor visitor = new EvalVisitor();
             visitor.DebugOption = true;
-            IEnvironment env = new NestedEnv();
+            IEnvironment env = new Natives().Enviroment(new NestedEnv());
             try {
                 while (lexer.Peek(0) != Token.EOF) {
                     ASTree ast = parser.Parse(lexer);

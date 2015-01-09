@@ -50,6 +50,7 @@
     <Compile Include="ExAST\BinaryExpr.cs" />
     <Compile Include="ExAST\BlockStmt.cs" />
     <Compile Include="ExAST\DefStmt.cs" />
+    <Compile Include="ExAST\Lambda.cs" />
     <Compile Include="ExAST\IfStmt.cs" />
     <Compile Include="ExAST\IntegerLiteral.cs" />
     <Compile Include="ExAST\Name.cs" />
@@ -63,6 +64,8 @@
     <Compile Include="BaseParser\ParseException.cs" />
     <Compile Include="BaseParser\IEnvironment.cs" />
     <Compile Include="ExEnvironment\Function.cs" />
+    <Compile Include="ExEnvironment\NativeFunction.cs" />
+    <Compile Include="ExEnvironment\Natives.cs" />
     <Compile Include="ExEnvironment\NestedEnv.cs" />
     <Compile Include="ExException\EvalException.cs" />
     <Compile Include="ExParser\RavParser.cs" />

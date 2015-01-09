@@ -261,29 +261,49 @@ namespace RavenParser.ExVisiter {
             return;
         }
         public void Visit(Arguments t, IEnvironment callerEnv, object value) {
-            if (!(value is Function)) {
-                result = new ErrorValue("bad function", t);
+            if (value is NativeFunction) {
+                NativeFunction func = value as NativeFunction;
+                int nparams = func.NumOfParameters;
+                if (t.Size != nparams) {
+                    result = new ErrorValue("bad number of arguments", t);
+                    return;
+                }
+                object[] args = new object[nparams];
+                int num = 0;
+                foreach (ASTree a in t) {
+                    a.Accept(this, callerEnv);
+                    if (result is ErrorValue) return;
+                    args[num++] = result;
+                }
+                result = func.Invoke(args, t);
                 return;
             }
-            Function func = value as Function;
-            ParameterList pars = func.Parameters;
-            if (t.Size != pars.Size) {
-                result = new ErrorValue("bad number of arguments", t);
+            if (value is Function) {
+                Function func = value as Function;
+                ParameterList pars = func.Parameters;
+                if (t.Size != pars.Size) {
+                    result = new ErrorValue("bad number of arguments", t);
+                    return;
+                }
+                IEnvironment newEnv = func.MakeEnv();
+                int num = 0;
+                foreach (ASTree a in t) {
+                    a.Accept(this, callerEnv);
+                    if (result is ErrorValue) return;
+                    pars.Accept(this, newEnv, num++, result);
+                    if (result is ErrorValue) return;
+                }
+                func.Body.Accept(this, newEnv);
                 return;
             }
-            IEnvironment newEnv = func.MakeEnv();
-            int num = 0;
-            foreach (ASTree a in t) {
-                a.Accept(this, callerEnv);
-                if (result is ErrorValue) return;
-                pars.Accept(this, newEnv, num++, result);
-                if (result is ErrorValue) return;
-            }
-            func.Body.Accept(this, newEnv);
+            result = new ErrorValue("bad function", t);
             return;
         }
-        public void Visit(ParameterList t,IEnvironment env, int index, object value) {
+        public void Visit(ParameterList t, IEnvironment env, int index, object value) {
             env.PutNew(t.Name(index), value);
+        }
+        public void Visit(Lambda t, IEnvironment env) {
+            result = new Function(t.Parameters, t.Body, env);
         }
     }
 }
