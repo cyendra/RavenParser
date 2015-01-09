@@ -47,6 +47,8 @@
     <Compile Include="BaseParser\ASTList.cs" />
     <Compile Include="BaseParser\ASTree.cs" />
     <Compile Include="ExAST\Arguments.cs" />
+    <Compile Include="ExAST\ArrayLiteral.cs" />
+    <Compile Include="ExAST\ArrayRef.cs" />
     <Compile Include="ExAST\BinaryExpr.cs" />
     <Compile Include="ExAST\BlockStmt.cs" />
     <Compile Include="ExAST\ClassBody.cs" />

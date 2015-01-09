@@ -133,6 +133,23 @@ namespace RavenParser.ExVisiter {
                         return SetField(t, (tp as RavObject), (p.Postfix(0) as Dot), rvalue);
                     }
                 }
+                else if (p.HasPostfix(0) && (p.Postfix(0) is ArrayRef)) {
+                    p.Accept(this, env, 1);
+                    object a = result;
+                    if (result is ErrorValue) return result;
+                    if (a is object[]) {
+                        ArrayRef aref = p.Postfix(0) as ArrayRef;
+                        aref.Index.Accept(this, env);
+                        if (result is ErrorValue) return result;
+                        object index = result;
+                        if (index is int) {
+                            (a as object[])[(int)index] = rvalue;
+                            return rvalue;
+                        }
+                    }
+                    result = new ErrorValue("bad array access", t);
+                    return result;
+                }
             }
             return new ErrorValue("bad assignment", t);
         }
@@ -392,6 +409,29 @@ namespace RavenParser.ExVisiter {
                 if (result is ErrorValue) return;
             }
             ci.Body.Accept(this, env);
+        }
+        public void Visit(ArrayLiteral t, IEnvironment env) {
+            int s = t.Size;
+            object[] res = new object[s];
+            int i = 0;
+            foreach (ASTree tree in t) {
+                tree.Accept(this, env);
+                if (result is ErrorValue) return;
+                res[i++] = result;
+            }
+            result = res;
+        }
+        public void Visit(ArrayRef t, IEnvironment env, object value) {
+            if (value is object[]) {
+                t.Index.Accept(this, env);
+                if (result is ErrorValue) return;
+                object index = result;
+                if (index is int) {
+                    result = (value as object[])[(int)index];
+                    return;
+                }
+            }
+            result = new ErrorValue("bad array access", t);
         }
     }
 }
