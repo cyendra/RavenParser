@@ -68,6 +68,8 @@
             this.Controls.Add(this.consoleText);
             this.Controls.Add(this.codeText);
             this.Controls.Add(this.runBtn);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Input";
             this.Text = "Input";
             this.ResumeLayout(false);
